@@ -1,0 +1,71 @@
+﻿@model Parking03.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label class="control-label col-md-4">Username</label>
+            @*@Html.DisplayNameFor(model => model.username)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-4" for="ic">Password</label>
+            @*@Html.DisplayNameFor(model => model.pass)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pass)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-4">Full Name</label>
+            @*@Html.DisplayNameFor(model => model.fullname)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fullname)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-4">IC Number</label>
+            @*@Html.DisplayNameFor(model => model.ic)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ic)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-4">Telephone Number</label>
+            @*@Html.DisplayNameFor(model => model.telno)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telno)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-4">Roles</label>
+            @*@Html.DisplayNameFor(model => model.role)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.role)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+    @*@Html.ActionLink("Back to List", "Index")*@
+</p>

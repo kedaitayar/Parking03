@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__RefactorLog">
+    <Key>
+      <PropertyRef Name="OperationKey" />
+    </Key>
+    <Property Name="OperationKey" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="plateno" />
+    </Key>
+    <Property Name="plateno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="carname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Car_ToTable" FromRole="Car" ToRole="User" />
+    <NavigationProperty Name="Records" Relationship="Self.FK_Record_ToTable_1" FromRole="Car" ToRole="Record" />
+  </EntityType>
+  <EntityType Name="Parking">
+    <Key>
+      <PropertyRef Name="parkid" />
+    </Key>
+    <Property Name="parkid" Type="Int32" Nullable="false" />
+    <Property Name="areaname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rate" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Records" Relationship="Self.FK_Record_ToTable" FromRole="Parking" ToRole="Record" />
+  </EntityType>
+  <EntityType Name="Record">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="duration" Type="Int32" Nullable="false" />
+    <Property Name="parkid" Type="Int32" Nullable="false" />
+    <Property Name="plateno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="price" Type="Double" Nullable="false" />
+    <Property Name="cid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Car" Relationship="Self.FK_Record_ToTable_1" FromRole="Record" ToRole="Car" />
+    <NavigationProperty Name="Parking" Relationship="Self.FK_Record_ToTable" FromRole="Record" ToRole="Parking" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Record_ToTable_2" FromRole="Record" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_Car_ToTable" FromRole="User" ToRole="Car" />
+    <NavigationProperty Name="Records" Relationship="Self.FK_Record_ToTable_2" FromRole="User" ToRole="Record" />
+  </EntityType>
+  <Association Name="FK_Car_ToTable">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Car" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Record_ToTable_1">
+    <End Role="Car" Type="Self.Car" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Record" Type="Self.Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Car">
+        <PropertyRef Name="plateno" />
+      </Principal>
+      <Dependent Role="Record">
+        <PropertyRef Name="plateno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Record_ToTable">
+    <End Role="Parking" Type="Self.Parking" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Record" Type="Self.Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parking">
+        <PropertyRef Name="parkid" />
+      </Principal>
+      <Dependent Role="Record">
+        <PropertyRef Name="parkid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Record_ToTable_2">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Record" Type="Self.Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Record">
+        <PropertyRef Name="cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+    <EntitySet Name="Cars" EntityType="Self.Car" />
+    <EntitySet Name="Parkings" EntityType="Self.Parking" />
+    <EntitySet Name="Records" EntityType="Self.Record" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Car_ToTable" Association="Self.FK_Car_ToTable">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Car" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Record_ToTable_1" Association="Self.FK_Record_ToTable_1">
+      <End Role="Car" EntitySet="Cars" />
+      <End Role="Record" EntitySet="Records" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Record_ToTable" Association="Self.FK_Record_ToTable">
+      <End Role="Parking" EntitySet="Parkings" />
+      <End Role="Record" EntitySet="Records" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Record_ToTable_2" Association="Self.FK_Record_ToTable_2">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Record" EntitySet="Records" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

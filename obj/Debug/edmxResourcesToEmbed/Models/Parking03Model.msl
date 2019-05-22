@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+    <EntitySetMapping Name="C__RefactorLog">
+      <EntityTypeMapping TypeName="Database1Model.C__RefactorLog">
+        <MappingFragment StoreEntitySet="__RefactorLog">
+          <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cars">
+      <EntityTypeMapping TypeName="Database1Model.Car">
+        <MappingFragment StoreEntitySet="Car">
+          <ScalarProperty Name="plateno" ColumnName="plateno" />
+          <ScalarProperty Name="carname" ColumnName="carname" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="cid" ColumnName="cid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parkings">
+      <EntityTypeMapping TypeName="Database1Model.Parking">
+        <MappingFragment StoreEntitySet="Parking">
+          <ScalarProperty Name="parkid" ColumnName="parkid" />
+          <ScalarProperty Name="areaname" ColumnName="areaname" />
+          <ScalarProperty Name="rate" ColumnName="rate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Records">
+      <EntityTypeMapping TypeName="Database1Model.Record">
+        <MappingFragment StoreEntitySet="Record">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="parkid" ColumnName="parkid" />
+          <ScalarProperty Name="plateno" ColumnName="plateno" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="cid" ColumnName="cid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Database1Model.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="telno" ColumnName="telno" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="ic" ColumnName="ic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

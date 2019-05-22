@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Parking03.Models.Parking>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Parking Area List</h2>
+
+<p>
+    @Html.ActionLink("Add New Parking", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label class="control-label col-md-4">Area Name</label>
+            @*@Html.DisplayNameFor(model => model.areaname)*@
+        </th>
+        <th>
+            <label class="control-label col-md-4">Rate (RM/Hour)</label>
+            @*@Html.DisplayNameFor(model => model.rate)*@
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.areaname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.parkid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.parkid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.parkid })
+        </td>
+    </tr>
+}
+
+</table>

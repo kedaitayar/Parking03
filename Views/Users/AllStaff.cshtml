@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Parking03.Models.User>
+
+@{
+    ViewBag.Title = "AllStaff";
+}
+
+<h2>List Of e-Parking Staff</h2>
+
+<p>
+    @Html.ActionLink("Add New Staff", "RegisterStaff")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label class="control-label col-md-2">Username</label>
+            @*@Html.DisplayNameFor(model => model.username)*@
+        </th> 
+        
+        <th>
+            <label class="control-label col-md-2">Password</label>
+            @*@Html.DisplayNameFor(model => model.pass)*@
+        </th>
+        
+        <th>
+            <label class="control-label col-md-2">Roles</label>
+            @*@Html.DisplayNameFor(model => model.role)*@
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.username)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.pass)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.role)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

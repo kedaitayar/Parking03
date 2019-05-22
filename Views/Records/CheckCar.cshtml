@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "CheckCar";
+}
+
+<h2>Check Car Status</h2>
+
+@using (Html.BeginForm("CheckCarDetails", "Records", FormMethod.Post))
+{
+    <span class="control-label">Search Plate Number</span><br>
+    <input class="form-control" name="plateno" type="text" placeholder="e.g JRU5383" /><br />
+    <input type="submit" value="Search" class="btn btn-default" />
+}

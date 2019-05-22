@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Parking03.Models.Record>
+
+@{
+    ViewBag.Title = "CheckCarResult";
+}
+
+<h2>CheckCarResult</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Car.carname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parking.areaname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.pass)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Car.carname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parking.areaname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.pass)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

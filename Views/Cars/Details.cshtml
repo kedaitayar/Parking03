@@ -1,0 +1,45 @@
+﻿@model Parking03.Models.Car
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Car Details</h2>
+
+<div>
+    <h4>This Is The Details Of Your Personal Car</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label class="control-label col-md-4">Plate Number</label>
+            @*@Html.DisplayNameFor(model => model.plateno)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.plateno)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-4">Car Name</label>
+            @*@Html.DisplayNameFor(model => model.carname)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.carname)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-4">Car Colour</label>
+            @*@Html.DisplayNameFor(model => model.color)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.color)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.plateno }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

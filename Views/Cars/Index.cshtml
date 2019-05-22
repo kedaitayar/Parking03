@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Parking03.Models.Car>
+
+@{
+    ViewBag.Title = "Car";
+}
+
+<h2>List Of Car</h2>
+<h4>You can manage your own car here.</h4>
+<p>
+    @Html.ActionLink("Add New Car", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label class="control-label col-md-4">Number Plate</label>
+            @*@Html.DisplayNameFor(model => model.plateno)*@
+        </th>
+        <th>
+            <label class="control-label col-md-4">Car Name</label>
+            @*@Html.DisplayNameFor(model => model.carname)*@
+        </th>
+        <th>
+            <label class="control-label col-md-4">Car Colour</label>
+            @*@Html.DisplayNameFor(model => model.color)*@
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.plateno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.carname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.color)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.plateno }) |
+            @Html.ActionLink("Details", "Details", new { id = item.plateno }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.plateno })
+        </td>
+    </tr>
+}
+
+</table>

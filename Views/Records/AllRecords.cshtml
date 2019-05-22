@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Parking03.Models.Record>
+
+@{
+    ViewBag.Title = "AllRecords";
+}
+
+<h2>All Parking Records</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label class="control-label col-md-4">Date</label>
+            @*@Html.DisplayNameFor(model => model.date)*@
+        </th>
+        <th>
+            <label class="control-label col-md-4">Duration</label>
+            @*@Html.DisplayNameFor(model => model.duration)*@
+        </th>
+        <th>
+            <label class="control-label col-md-4">Total Price</label>
+            @*@Html.DisplayNameFor(model => model.price)*@
+        </th>
+        <th>
+            <label class="control-label col-md-4">Plate Number</label>
+            @*@Html.DisplayNameFor(model => model.Car.plateno)*@
+        </th>
+        <th>
+            <label class="control-label col-md-4">Car Name</label>
+            @*@Html.DisplayNameFor(model => model.Car.carname)*@
+        </th>
+        <th>
+            <label class="control-label col-md-4">Parking Area</label>
+            @*@Html.DisplayNameFor(model => model.Parking.areaname)*@
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.duration) Hours
+        </td>
+        <td>
+            RM @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Car.plateno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Car.carname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parking.areaname)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })*@
+        </td>
+    </tr>
+}
+
+</table>
